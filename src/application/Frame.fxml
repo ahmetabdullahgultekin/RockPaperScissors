@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" style="-fx-background-color: orange; -fx-border-color: yellow; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Frame">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <children>
+      <ImageView fx:id="iwRock" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" x="75.0" y="150.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ImageView>
+      <ImageView fx:id="iwPaper" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" x="225.0" y="300.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ImageView>
+      <ImageView fx:id="iwScissors" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" x="375.0" y="150.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ImageView>
+      <ImageView fx:id="iwHuman" fitHeight="163.0" fitWidth="150.0" layoutX="228.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" x="375.0" y="150.0" />
+      <ImageView fx:id="iwComputer" fitHeight="163.0" fitWidth="150.0" layoutX="457.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" x="375.0" y="150.0" />
+      <Label fx:id="labelInfo" alignment="CENTER" layoutX="197.0" layoutY="474.0" prefHeight="27.0" prefWidth="206.0" style="-fx-border-width: 3; -fx-border-color: yellow; -fx-border-radius: 25;" text="Computer vs. You" textAlignment="CENTER" textFill="#ffee00">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelQuestion" alignment="CENTER" layoutX="182.0" layoutY="65.0" prefHeight="42.0" prefWidth="237.0" style="-fx-border-width: 3; -fx-border-color: yellow; -fx-border-radius: 25;" text="What is your choice?" textAlignment="CENTER" textFill="#ffee00">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelHuman" alignment="CENTER" layoutX="655.0" layoutY="150.0" prefHeight="36.0" prefWidth="46.0" style="-fx-border-width: 3; -fx-border-color: yellow; -fx-border-radius: 25;" text="You" textAlignment="CENTER" textFill="#ffee00">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btRestart" alignment="CENTER" contentDisplay="CENTER" layoutX="246.0" layoutY="538.0" mnemonicParsing="false" style="-fx-background-color: orange; -fx-border-radius: 15; -fx-border-width: 1; -fx-border-color: yellow;" text="Restart Game" textAlignment="CENTER" textFill="#eaff00">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="labelCmp" alignment="CENTER" layoutX="856.0" layoutY="150.0" prefHeight="36.0" prefWidth="101.0" style="-fx-border-width: 3; -fx-border-color: yellow; -fx-border-radius: 25;" text="Computer" textAlignment="CENTER" textFill="#ffee00">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelVS" alignment="CENTER" layoutX="774.0" layoutY="296.0" prefHeight="36.0" prefWidth="35.0" style="-fx-border-width: 3; -fx-border-color: yellow; -fx-border-radius: 25;" text="VS" textAlignment="CENTER" textFill="#ffee00">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelScore" alignment="CENTER" layoutX="673.0" layoutY="463.0" prefHeight="58.0" prefWidth="237.0" style="-fx-border-width: 3; -fx-border-color: yellow; -fx-border-radius: 25;" text="You: 0 Computer: 0" textAlignment="CENTER" textFill="#ffee00">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
