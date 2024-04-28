@@ -20,7 +20,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Frame implements Initializable {
@@ -142,15 +141,11 @@ public class Frame implements Initializable {
 
 				switch (cmp) {
 					case 1:
-						scoreH += 0;
-						scoreC += 0;
 						break;
 					case 2:
 						scoreH += 1;
-						scoreC += 0;
 						break;
 					case 3:
-						scoreH += 0;
 						scoreC += 1;
 						break;
 
@@ -209,10 +204,6 @@ public class Frame implements Initializable {
 
 			boolean who = false;
 
-			if(scoreC == 3) {
-				labelQuestion.setText("You lose!");
-				who = false;
-			}
 			if(scoreH == 3 ) {
 				labelQuestion.setText("You won!");
 				who = true;
@@ -220,7 +211,6 @@ public class Frame implements Initializable {
 
 			setdisable(true);
 			animationBt.play();
-
 
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Game Over!");
