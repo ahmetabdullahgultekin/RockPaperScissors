@@ -4,24 +4,28 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
+import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Frame implements Initializable {
 
-	@FXML
-	private AnchorPane pane;
 	@FXML
 	private ImageView iwRock;
 	@FXML
@@ -33,17 +37,9 @@ public class Frame implements Initializable {
 	@FXML
 	private ImageView iwComputer;
 	@FXML
-	private Label labelInfo;
-	@FXML
 	private Label labelQuestion;
 	@FXML
-	private Label labelHuman;
-	@FXML
 	private Button btRestart;
-	@FXML
-	private Label labelCmp;
-	@FXML
-	private Label labelVS;
 	@FXML
 	private Label labelScore;
 
@@ -54,6 +50,7 @@ public class Frame implements Initializable {
 	Image imageDefeat;
 	Stage stage;
 	Random random;
+	Animation animationBt;
 	int cmp;
 	int scoreH;
 	int scoreC;
@@ -95,6 +92,7 @@ public class Frame implements Initializable {
 
 	public void restartGame() {
 
+		animationBt.stop();
 		scoreH = 0;
 		scoreC = 0;
 		labelScore.setText("You: 0 Computer: 0");
@@ -106,106 +104,121 @@ public class Frame implements Initializable {
 
 	public void select(String choice) {
 
+		animationBt = new Transition() {
+
+			{
+				setCycleCount(Animation.INDEFINITE);
+				setCycleDuration(Duration.millis(2000));
+				setInterpolator(Interpolator.EASE_OUT);
+			}
+
+			@Override
+			protected void interpolate(double frac) {
+				Color vColor = new Color(0.5, 0.7, 0.2, 1 - frac);
+				btRestart.setBackground(new Background(new BackgroundFill(vColor, new CornerRadii(15), Insets.EMPTY)));
+			}
+		};
+
 		cmp = random.nextInt(3) + 1;
 		switch (cmp) {
-		case 1:
-			iwComputer.setImage(imagePaper);
-			break;
-		case 2:
-			iwComputer.setImage(imageRock);
-			break;
-		case 3:
-			iwComputer.setImage(imageScissors);
-			break;
+			case 1:
+				iwComputer.setImage(imagePaper);
+				break;
+			case 2:
+				iwComputer.setImage(imageRock);
+				break;
+			case 3:
+				iwComputer.setImage(imageScissors);
+				break;
 
-		default:
-			System.out.println("Error!");
-			break;
+			default:
+				System.out.println("Error!");
+				break;
 		}
 
 
 		switch (choice) {
 
-		case "paper":
-			iwHuman.setImage(imagePaper);
+			case "paper":
+				iwHuman.setImage(imagePaper);
 
-			switch (cmp) {
-			case 1:
-				scoreH += 0;
-				scoreC += 0;
+				switch (cmp) {
+					case 1:
+						scoreH += 0;
+						scoreC += 0;
+						break;
+					case 2:
+						scoreH += 1;
+						scoreC += 0;
+						break;
+					case 3:
+						scoreH += 0;
+						scoreC += 1;
+						break;
+
+					default:
+						System.out.println("Error!");
+						break;
+				}
 				break;
-			case 2:
-				scoreH += 1;
-				scoreC += 0;
+
+			case "rock":
+				iwHuman.setImage(imageRock);
+
+				switch (cmp) {
+					case 1:
+						scoreH += 0;
+						scoreC += 1;
+						break;
+					case 2:
+						scoreH += 0;
+						scoreC += 0;
+						break;
+					case 3:
+						scoreH += 1;
+						scoreC += 0;
+						break;
+
+					default:
+						System.out.println("Error!");
+						break;
+				}
 				break;
-			case 3:
-				scoreH += 0;
-				scoreC += 1;
+
+			case "scissors":
+				iwHuman.setImage(imageScissors);
+
+				switch (cmp) {
+					case 1:
+						scoreH += 1;
+						scoreC += 0;
+						break;
+					case 2:
+						scoreH += 0;
+						scoreC += 1;
+						break;
+					case 3:
+						scoreH += 0;
+						scoreC += 0;
+						break;
+
+					default:
+						System.out.println("Error!");
+						break;
+				}
 				break;
 
 			default:
 				System.out.println("Error!");
 				break;
-			}
-			break;
-
-		case "rock":
-			iwHuman.setImage(imageRock);
-
-			switch (cmp) {
-			case 1:
-				scoreH += 0;
-				scoreC += 1;
-				break;
-			case 2:
-				scoreH += 0;
-				scoreC += 0;
-				break;
-			case 3:
-				scoreH += 1;
-				scoreC += 0;
-				break;
-
-			default:
-				System.out.println("Error!");
-				break;
-			}
-			break;
-
-		case "scissors":
-			iwHuman.setImage(imageScissors);
-
-			switch (cmp) {
-			case 1:
-				scoreH += 1;
-				scoreC += 0;
-				break;
-			case 2:
-				scoreH += 0;
-				scoreC += 1;
-				break;
-			case 3:
-				scoreH += 0;
-				scoreC += 0;
-				break;
-
-			default:
-				System.out.println("Error!");
-				break;
-			}
-			break;
-
-		default:
-			System.out.println("Error!");
-			break;
 		}
 
 		labelScore.setText("You: " + scoreH + " Computer: " + scoreC);
 
 		if(scoreC == 3 || scoreH == 3 ) {
-			
+
 			boolean who = false;
-			
+
 			if(scoreC == 3) {
 				labelQuestion.setText("You lose!");
 				who = false;
@@ -214,9 +227,11 @@ public class Frame implements Initializable {
 				labelQuestion.setText("You won!");
 				who = true;
 			}
-			
+
 			setdisable(true);
-			
+			animationBt.play();
+
+
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Game Over!");
 			alert.setContentText((who) ? "You won!" : "Computer won!");
