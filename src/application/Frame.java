@@ -16,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -48,7 +47,6 @@ public class Frame implements Initializable {
 	Image imageScissors;
 	Image imageVictory;
 	Image imageDefeat;
-	Stage stage;
 	Random random;
 	Animation animationBt;
 	int cmp;
@@ -167,16 +165,12 @@ public class Frame implements Initializable {
 
 				switch (cmp) {
 					case 1:
-						scoreH += 0;
 						scoreC += 1;
 						break;
 					case 2:
-						scoreH += 0;
-						scoreC += 0;
 						break;
 					case 3:
 						scoreH += 1;
-						scoreC += 0;
 						break;
 
 					default:
@@ -191,15 +185,11 @@ public class Frame implements Initializable {
 				switch (cmp) {
 					case 1:
 						scoreH += 1;
-						scoreC += 0;
 						break;
 					case 2:
-						scoreH += 0;
 						scoreC += 1;
 						break;
 					case 3:
-						scoreH += 0;
-						scoreC += 0;
 						break;
 
 					default:
